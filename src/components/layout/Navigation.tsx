@@ -2,12 +2,13 @@
 
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Menu, X, Zap } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
 import { useSmartNavigation } from '@/hooks/useSmartNavigation';
+import Image from 'next/image';
 
 const DEFAULT_NAVIGATION = {
-  brandName: 'TechFlow',
+  brandName: 'Webline',
   navItems: [
     { label: 'Home', href: '#hero' },
     { label: 'Pricing', href: '#pricing' },
@@ -42,10 +43,14 @@ export default function Navigation(props: NavigationProps) {
               onClick={() => navigate('/')}
               className="flex items-center gap-2 hover:opacity-80 transition-opacity"
             >
-              <Zap className="h-8 w-8 text-primary" />
-              <span className="font-bold text-xl tracking-tight" data-editable="brandName">
-                {config.brandName}
-              </span>
+              <Image
+                src="https://pub-60de11c8c43b49ea9bd786eb6273aa91.r2.dev/c8f61e1b75384ec4a63e1d190b3649c3.png"
+                alt="Webline Logo"
+                width={120}
+                height={48}
+                className="h-8 w-auto object-contain"
+                data-editable-src="logoSrc"
+              />
             </button>
           </div>
 
@@ -95,10 +100,14 @@ export default function Navigation(props: NavigationProps) {
                 <div className="flex flex-col space-y-4 mt-8">
                   {/* Mobile Logo */}
                   <div className="flex items-center gap-2 pb-4 border-b border-border">
-                    <Zap className="h-6 w-6 text-primary" />
-                    <span className="font-bold text-lg" data-editable="brandName">
-                      {config.brandName}
-                    </span>
+                    <Image
+                      src="https://pub-60de11c8c43b49ea9bd786eb6273aa91.r2.dev/c8f61e1b75384ec4a63e1d190b3649c3.png"
+                      alt="Webline Logo"
+                      width={120}
+                      height={48}
+                      className="h-6 w-auto object-contain"
+                      data-editable-src="logoSrc"
+                    />
                   </div>
 
                   {/* Mobile Navigation Items */}
