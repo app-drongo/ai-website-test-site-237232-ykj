@@ -146,8 +146,8 @@ export default function Hero(props: HeroProps) {
               <div className="relative">
                 {/* Hero Image */}
                 <img
-                  src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&h=1000&fit=crop&q=80"
-                  alt="Modern development workspace with multiple monitors showing code and data visualizations"
+                  src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=1000&fit=crop&q=80"
+                  alt="Clean coding environment with laptop displaying colorful code syntax highlighting and development tools"
                   className="aspect-square lg:aspect-[4/5] w-full object-cover rounded-2xl border border-border/50"
                 />
 
