@@ -2,27 +2,29 @@
 
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { ArrowRight, Play, Zap, Shield, Users } from 'lucide-react';
-import Image from 'next/image';
-import { useState } from 'react';
+import { ArrowRight, Zap, Shield, Rocket } from 'lucide-react';
 import { useSmartNavigation } from '@/hooks/useSmartNavigation';
+import { useState, useEffect } from 'react';
 
 const DEFAULT_HERO = {
   badge: 'New Release',
-  title: 'Technology Made Simple',
-  subtitle:
-    'Clean, intuitive solutions that bridge the gap between complex technology and everyday users. Experience effortless innovation.',
+  title: 'Build. Deploy. Scale.',
+  subtitle: 'The modern platform for developers who ship fast',
   description:
-    'We believe technology should work for everyone, not just experts. Our streamlined approach transforms complicated processes into simple, user-friendly experiences.',
-  primaryCta: 'Get Started',
-  primaryCtaHref: '/start',
-  secondaryCta: 'Watch Demo',
-  imageUrl: 'https://plus.unsplash.com/premium_photo-1681398842383-25f5613873b1?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fHRlY2hub2xvZ3l8ZW58MHx8MHx8fDA%3D',
-  imageAlt: 'Clean technology workspace with modern devices',
+    'Deploy your applications instantly with zero configuration. Built for teams that value speed, reliability, and developer experience.',
+  primaryCta: 'Get Started Free',
+  primaryCtaHref: '/signup',
+  secondaryCta: 'View Demo',
+  secondaryCtaHref: '/demo',
   features: [
-    { title: 'Simple by Design', description: 'Intuitive interfaces that anyone can use' },
-    { title: 'Secure & Reliable', description: 'Enterprise-grade security made accessible' },
-    { title: 'User-Focused', description: 'Built for real people, not just tech experts' },
+    { title: 'Instant Deploy', description: 'Push to deploy in seconds' },
+    { title: 'Enterprise Security', description: 'SOC 2 compliant infrastructure' },
+    { title: 'Global Edge', description: 'Deploy to 300+ locations worldwide' },
+  ],
+  stats: [
+    { value: '99.99%', label: 'Uptime SLA' },
+    { value: '< 100ms', label: 'Cold Start' },
+    { value: '50M+', label: 'Requests/day' },
   ],
 } as const;
 
@@ -31,126 +33,133 @@ type HeroProps = Partial<typeof DEFAULT_HERO>;
 export default function Hero(props: HeroProps) {
   const config = { ...DEFAULT_HERO, ...props };
   const navigate = useSmartNavigation();
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
-  const handlePrimaryCta = () => {
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
+
+  const handlePrimaryClick = () => {
     navigate(config.primaryCtaHref);
   };
 
   const handleSecondaryClick = () => {
-    setIsPlaying(!isPlaying);
+    navigate(config.secondaryCtaHref);
   };
 
   return (
-    <section id="hero" className="bg-background text-foreground py-16 lg:py-24">
+    <section id="hero" className="bg-background text-foreground py-20 lg:py-32">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
-          {/* Left Content */}
-          <div className="space-y-8">
-            <div className="space-y-6">
-              <Badge
-                variant="secondary"
-                className="bg-primary/10 text-primary border-primary/20 hover:bg-primary/20 transition-colors"
-              >
-                <span data-editable="badge">{config.badge}</span>
-              </Badge>
+        <div className="max-w-4xl mx-auto text-center">
+          {/* Badge */}
+          <div
+            className={`mb-8 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+          >
+            <Badge variant="secondary" className="px-4 py-2 text-sm font-medium">
+              <Zap className="h-4 w-4 mr-2 text-primary" />
+              <span data-editable="badge">{config.badge}</span>
+            </Badge>
+          </div>
 
-              <div className="space-y-4">
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
-                  <span data-editable="title">{config.title}</span>
-                </h1>
+          {/* Main Heading */}
+          <div
+            className={`mb-6 transition-all duration-700 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+          >
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
+              <span data-editable="title">{config.title}</span>
+            </h1>
+          </div>
 
-                <p className="text-xl text-muted-foreground leading-relaxed">
-                  <span data-editable="subtitle">{config.subtitle}</span>
-                </p>
+          {/* Subtitle */}
+          <div
+            className={`mb-6 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+          >
+            <p className="text-xl sm:text-2xl text-muted-foreground font-medium">
+              <span data-editable="subtitle">{config.subtitle}</span>
+            </p>
+          </div>
 
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  <span data-editable="description">{config.description}</span>
-                </p>
-              </div>
-            </div>
+          {/* Description */}
+          <div
+            className={`mb-10 transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+          >
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+              <span data-editable="description">{config.description}</span>
+            </p>
+          </div>
 
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4">
+          {/* CTA Buttons */}
+          <div
+            className={`mb-16 transition-all duration-700 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+          >
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Button
                 size="lg"
-                onClick={handlePrimaryCta}
+                onClick={handlePrimaryClick}
                 data-editable-href="primaryCtaHref"
                 data-href={config.primaryCtaHref}
-                className="bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-200 group"
+                className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-3 text-lg font-semibold group"
               >
                 <span data-editable="primaryCta">{config.primaryCta}</span>
-                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Button>
 
               <Button
                 variant="outline"
                 size="lg"
                 onClick={handleSecondaryClick}
-                className="border-border hover:bg-accent hover:text-accent-foreground transition-all duration-200 group"
+                data-editable-href="secondaryCtaHref"
+                data-href={config.secondaryCtaHref}
+                className="px-8 py-3 text-lg font-semibold"
               >
-                <Play
-                  className={`mr-2 h-4 w-4 transition-transform ${isPlaying ? 'scale-110' : ''}`}
-                />
                 <span data-editable="secondaryCta">{config.secondaryCta}</span>
               </Button>
             </div>
+          </div>
 
-            {/* Feature Pills */}
-            <div className="grid gap-4 sm:grid-cols-3">
-              {config.features.map((feature, idx) => (
-                <div
-                  key={idx}
-                  className="flex items-start gap-3 p-4 rounded-lg bg-muted/50 hover:bg-muted transition-colors"
-                >
-                  <div className="text-primary mt-1">
-                    {idx === 0 && <Zap className="h-5 w-5" />}
-                    {idx === 1 && <Shield className="h-5 w-5" />}
-                    {idx === 2 && <Users className="h-5 w-5" />}
+          {/* Stats */}
+          <div
+            className={`mb-16 transition-all duration-700 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+          >
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-2xl mx-auto">
+              {config.stats.map((stat, idx) => (
+                <div key={idx} className="text-center">
+                  <div className="text-2xl sm:text-3xl font-bold text-primary mb-1">
+                    <span data-editable={`stats[${idx}].value`}>{stat.value}</span>
                   </div>
-                  <div className="space-y-1">
-                    <h3 className="font-semibold text-sm">
-                      <span data-editable={`features[${idx}].title`}>{feature.title}</span>
-                    </h3>
-                    <p className="text-xs text-muted-foreground">
-                      <span data-editable={`features[${idx}].description`}>
-                        {feature.description}
-                      </span>
-                    </p>
+                  <div className="text-sm text-muted-foreground font-medium">
+                    <span data-editable={`stats[${idx}].label`}>{stat.label}</span>
                   </div>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Right Image */}
-          <div className="relative">
-            <div className="relative overflow-hidden rounded-2xl bg-muted">
-              <Image
-                src={config.imageUrl}
-                alt={config.imageAlt}
-                data-editable-src="imageUrl"
-                width={800}
-                height={600}
-                className="w-full h-auto object-cover transition-transform duration-700 hover:scale-105"
-                priority
-              />
-
-              {/* Overlay gradient for better text contrast */}
-              <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent" />
-
-              {/* Floating elements for visual interest */}
-              <div className="absolute top-6 right-6 bg-background/90 backdrop-blur-sm rounded-lg p-3 shadow-lg">
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                  <span className="text-sm font-medium">Live</span>
+          {/* Features */}
+          <div
+            className={`transition-all duration-700 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+          >
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto">
+              {config.features.map((feature, idx) => (
+                <div key={idx} className="text-center group">
+                  <div className="mb-4 flex justify-center">
+                    <div className="p-3 rounded-lg bg-primary/10 text-primary group-hover:bg-primary/20 transition-colors">
+                      {idx === 0 && <Zap className="h-6 w-6" />}
+                      {idx === 1 && <Shield className="h-6 w-6" />}
+                      {idx === 2 && <Rocket className="h-6 w-6" />}
+                    </div>
+                  </div>
+                  <h3 className="text-lg font-semibold mb-2">
+                    <span data-editable={`features[${idx}].title`}>{feature.title}</span>
+                  </h3>
+                  <p className="text-muted-foreground">
+                    <span data-editable={`features[${idx}].description`}>
+                      {feature.description}
+                    </span>
+                  </p>
                 </div>
-              </div>
+              ))}
             </div>
-
-            {/* Background decoration */}
-            <div className="absolute -top-4 -right-4 w-24 h-24 bg-primary/10 rounded-full blur-xl" />
-            <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-accent/10 rounded-full blur-xl" />
           </div>
         </div>
       </div>
