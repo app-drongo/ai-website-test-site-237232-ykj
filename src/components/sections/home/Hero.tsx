@@ -17,7 +17,7 @@ const DEFAULT_HERO = {
   primaryCta: 'Get Started',
   primaryCtaHref: '/start',
   secondaryCta: 'Watch Demo',
-  imageUrl: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  imageUrl: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fHRlY2hub2xvZ3l8ZW58MHx8MHx8fDA%3D',
   imageAlt: 'Clean technology workspace with modern devices',
   features: [
     { title: 'Simple by Design', description: 'Intuitive interfaces that anyone can use' },
