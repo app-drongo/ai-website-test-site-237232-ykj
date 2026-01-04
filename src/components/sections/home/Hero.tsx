@@ -50,116 +50,141 @@ export default function Hero(props: HeroProps) {
   return (
     <section id="hero" className="bg-background text-foreground py-20 lg:py-32">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center">
-          {/* Badge */}
-          <div
-            className={`mb-8 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
-          >
-            <Badge variant="secondary" className="px-4 py-2 text-sm font-medium">
-              <Zap className="h-4 w-4 mr-2 text-primary" />
-              <span data-editable="badge">{config.badge}</span>
-            </Badge>
-          </div>
-
-          {/* Main Heading */}
-          <div
-            className={`mb-6 transition-all duration-700 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
-          >
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
-              <span data-editable="title">{config.title}</span>
-            </h1>
-          </div>
-
-          {/* Subtitle */}
-          <div
-            className={`mb-6 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
-          >
-            <p className="text-xl sm:text-2xl text-muted-foreground font-medium">
-              <span data-editable="subtitle">{config.subtitle}</span>
-            </p>
-          </div>
-
-          {/* Description */}
-          <div
-            className={`mb-10 transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
-          >
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              <span data-editable="description">{config.description}</span>
-            </p>
-          </div>
-
-          {/* CTA Buttons */}
-          <div
-            className={`mb-16 transition-all duration-700 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
-          >
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Button
-                size="lg"
-                onClick={handlePrimaryClick}
-                data-editable-href="primaryCtaHref"
-                data-href={config.primaryCtaHref}
-                className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-3 text-lg font-semibold group"
-              >
-                <span data-editable="primaryCta">{config.primaryCta}</span>
-                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-              </Button>
-
-              <Button
-                variant="outline"
-                size="lg"
-                onClick={handleSecondaryClick}
-                data-editable-href="secondaryCtaHref"
-                data-href={config.secondaryCtaHref}
-                className="px-8 py-3 text-lg font-semibold"
-              >
-                <span data-editable="secondaryCta">{config.secondaryCta}</span>
-              </Button>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          {/* Left Column - Main Content */}
+          <div className="order-1 lg:order-1">
+            {/* Badge */}
+            <div
+              className={`mb-8 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+            >
+              <Badge variant="secondary" className="px-4 py-2 text-sm font-medium">
+                <Zap className="h-4 w-4 mr-2 text-primary" />
+                <span data-editable="badge">{config.badge}</span>
+              </Badge>
             </div>
-          </div>
 
-          {/* Stats */}
-          <div
-            className={`mb-16 transition-all duration-700 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
-          >
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-2xl mx-auto">
-              {config.stats.map((stat, idx) => (
-                <div key={idx} className="text-center">
-                  <div className="text-2xl sm:text-3xl font-bold text-primary mb-1">
-                    <span data-editable={`stats[${idx}].value`}>{stat.value}</span>
-                  </div>
-                  <div className="text-sm text-muted-foreground font-medium">
-                    <span data-editable={`stats[${idx}].label`}>{stat.label}</span>
-                  </div>
-                </div>
-              ))}
+            {/* Main Heading */}
+            <div
+              className={`mb-6 transition-all duration-700 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+            >
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
+                <span data-editable="title">{config.title}</span>
+              </h1>
             </div>
-          </div>
 
-          {/* Features */}
-          <div
-            className={`transition-all duration-700 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
-          >
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto">
-              {config.features.map((feature, idx) => (
-                <div key={idx} className="text-center group">
-                  <div className="mb-4 flex justify-center">
-                    <div className="p-3 rounded-lg bg-primary/10 text-primary group-hover:bg-primary/20 transition-colors">
-                      {idx === 0 && <Zap className="h-6 w-6" />}
-                      {idx === 1 && <Shield className="h-6 w-6" />}
-                      {idx === 2 && <Rocket className="h-6 w-6" />}
+            {/* Subtitle */}
+            <div
+              className={`mb-6 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+            >
+              <p className="text-xl sm:text-2xl text-muted-foreground font-medium">
+                <span data-editable="subtitle">{config.subtitle}</span>
+              </p>
+            </div>
+
+            {/* Description */}
+            <div
+              className={`mb-10 transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+            >
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                <span data-editable="description">{config.description}</span>
+              </p>
+            </div>
+
+            {/* CTA Buttons */}
+            <div
+              className={`mb-12 transition-all duration-700 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+            >
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button
+                  size="lg"
+                  onClick={handlePrimaryClick}
+                  data-editable-href="primaryCtaHref"
+                  data-href={config.primaryCtaHref}
+                  className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-3 text-lg font-semibold group"
+                >
+                  <span data-editable="primaryCta">{config.primaryCta}</span>
+                  <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                </Button>
+
+                <Button
+                  variant="outline"
+                  size="lg"
+                  onClick={handleSecondaryClick}
+                  data-editable-href="secondaryCtaHref"
+                  data-href={config.secondaryCtaHref}
+                  className="px-8 py-3 text-lg font-semibold"
+                >
+                  <span data-editable="secondaryCta">{config.secondaryCta}</span>
+                </Button>
+              </div>
+            </div>
+
+            {/* Stats */}
+            <div
+              className={`transition-all duration-700 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+            >
+              <div className="grid grid-cols-3 gap-6">
+                {config.stats.map((stat, idx) => (
+                  <div key={idx} className="text-left">
+                    <div className="text-2xl sm:text-3xl font-bold text-primary mb-1">
+                      <span data-editable={`stats[${idx}].value`}>{stat.value}</span>
+                    </div>
+                    <div className="text-sm text-muted-foreground font-medium">
+                      <span data-editable={`stats[${idx}].label`}>{stat.label}</span>
                     </div>
                   </div>
-                  <h3 className="text-lg font-semibold mb-2">
-                    <span data-editable={`features[${idx}].title`}>{feature.title}</span>
-                  </h3>
-                  <p className="text-muted-foreground">
-                    <span data-editable={`features[${idx}].description`}>
-                      {feature.description}
-                    </span>
-                  </p>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
+          </div>
+
+          {/* Right Column - Image */}
+          <div className="order-2 lg:order-2">
+            <div
+              className={`transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}
+            >
+              <div className="relative">
+                {/* Placeholder Image */}
+                <div className="aspect-square lg:aspect-[4/5] bg-gradient-to-br from-primary/20 via-primary/10 to-background rounded-2xl border border-border/50 flex items-center justify-center">
+                  <div className="text-center p-8">
+                    <div className="w-24 h-24 mx-auto mb-6 bg-primary/10 rounded-full flex items-center justify-center">
+                      <Rocket className="h-12 w-12 text-primary" />
+                    </div>
+                    <p className="text-muted-foreground text-lg font-medium">Hero Illustration</p>
+                    <p className="text-muted-foreground/70 text-sm mt-2">Replace with your image</p>
+                  </div>
+                </div>
+
+                {/* Decorative Elements */}
+                <div className="absolute -top-4 -right-4 w-8 h-8 bg-primary/20 rounded-full"></div>
+                <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-primary/30 rounded-full"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Features - Full Width Below */}
+        <div
+          className={`mt-20 lg:mt-24 transition-all duration-700 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+        >
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+            {config.features.map((feature, idx) => (
+              <div key={idx} className="text-center group">
+                <div className="mb-4 flex justify-center">
+                  <div className="p-3 rounded-lg bg-primary/10 text-primary group-hover:bg-primary/20 transition-colors">
+                    {idx === 0 && <Zap className="h-6 w-6" />}
+                    {idx === 1 && <Shield className="h-6 w-6" />}
+                    {idx === 2 && <Rocket className="h-6 w-6" />}
+                  </div>
+                </div>
+                <h3 className="text-lg font-semibold mb-2">
+                  <span data-editable={`features[${idx}].title`}>{feature.title}</span>
+                </h3>
+                <p className="text-muted-foreground">
+                  <span data-editable={`features[${idx}].description`}>{feature.description}</span>
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
