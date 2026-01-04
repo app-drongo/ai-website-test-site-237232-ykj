@@ -144,16 +144,12 @@ export default function Hero(props: HeroProps) {
               className={`transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}
             >
               <div className="relative">
-                {/* Placeholder Image */}
-                <div className="aspect-square lg:aspect-[4/5] bg-gradient-to-br from-primary/20 via-primary/10 to-background rounded-2xl border border-border/50 flex items-center justify-center">
-                  <div className="text-center p-8">
-                    <div className="w-24 h-24 mx-auto mb-6 bg-primary/10 rounded-full flex items-center justify-center">
-                      <Rocket className="h-12 w-12 text-primary" />
-                    </div>
-                    <p className="text-muted-foreground text-lg font-medium">Hero Illustration</p>
-                    <p className="text-muted-foreground/70 text-sm mt-2">Replace with your image</p>
-                  </div>
-                </div>
+                {/* Hero Image */}
+                <img
+                  src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&h=1000&fit=crop&q=80"
+                  alt="Modern development workspace with multiple monitors showing code and data visualizations"
+                  className="aspect-square lg:aspect-[4/5] w-full object-cover rounded-2xl border border-border/50"
+                />
 
                 {/* Decorative Elements */}
                 <div className="absolute -top-4 -right-4 w-8 h-8 bg-primary/20 rounded-full"></div>
